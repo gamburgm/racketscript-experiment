@@ -25,11 +25,11 @@
     (add-child! node child)
     node))
 
-(define (add-top-text node text)
-  (let ([new-node (text-node text)])
-    (($ node 'appendChild) new-node)))
+(define (add-top-text! parent str)
+  (let ([new-node (text-node str)])
+    (add-child! parent new-node)))
 
-(define (create-counter parent)
+(define (create-counter! parent)
   (let ([cnt (box 0)]
         [display-node (div-node)])
     (define (updater)
@@ -42,4 +42,4 @@
     (add-child! parent display-node)
     (add-child! parent btn)))
   
-(create-counter BODY-NODE)
+(create-counter! BODY-NODE)
